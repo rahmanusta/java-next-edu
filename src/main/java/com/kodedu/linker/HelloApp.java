@@ -1,9 +1,6 @@
 package com.kodedu.linker;
 
-import jdk.incubator.foreign.CLinker;
-import jdk.incubator.foreign.FunctionDescriptor;
-import jdk.incubator.foreign.LibraryLookup;
-import jdk.incubator.foreign.MemoryAddress;
+import jdk.incubator.foreign.*;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodType;
@@ -12,7 +9,9 @@ import java.nio.file.Paths;
 
 import static jdk.incubator.foreign.CLinker.C_INT;
 import static jdk.incubator.foreign.CLinker.C_POINTER;
-
+/*
+    --enable-native-access=java17edu
+ */
 public class HelloApp {
 
     public static void main(String[] args) throws Throwable {
@@ -23,7 +22,8 @@ public class HelloApp {
          Compile hello.c before run this class
           */
         Path path = Paths.get("/Users/usta/projects/java16-edu/nativecode/hello");
-        LibraryLookup helloLibrary = LibraryLookup.ofPath(path);
+        System.load(path.toString());
+        SymbolLookup helloLibrary = SymbolLookup.loaderLookup();
 
         MethodHandle hello = CLinker.getInstance()
                 .downcallHandle(
@@ -32,7 +32,7 @@ public class HelloApp {
                         FunctionDescriptor.of(C_INT, C_POINTER)
                 );
 
-        final MemoryAddress address = CLinker.toCString("Istanbul JUG").address();
+        final MemoryAddress address = CLinker.toCString("Istanbul JUG", ResourceScope.newConfinedScope()).address();
         hello.invoke(address);
     }
 }

@@ -23,16 +23,11 @@ public class SealedApp {
     }
 
     private static int calculate(Expr expr) {
-        if (expr instanceof ConstantExpr e) {
-            return e.value();
-        } else if (expr instanceof PlusExpr e) {
-            return calculate(e.first()) + calculate(e.second());
-        } else if (expr instanceof TimesExpr e) {
-            return calculate(e.first()) * calculate(e.second());
-        } else if (expr instanceof NegExpr e) {
-            return -calculate(e.expr());
-        } else {
-            throw new RuntimeException("There is no such case " + expr);
-        }
+        return switch (expr){
+            case ConstantExpr e -> e.value();
+            case PlusExpr e -> calculate(e.first()) + calculate(e.second());
+            case TimesExpr e -> calculate(e.first()) * calculate(e.second());
+            case NegExpr e -> -calculate(e.expr());
+        };
     }
 }
