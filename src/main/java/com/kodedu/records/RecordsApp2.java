@@ -8,6 +8,7 @@ public class RecordsApp2 {
         Point point2 = new Point(2, 3);
 
         System.out.println("Equal? " + point1.equals(point2));
+        System.out.println("Equal? " + (point1 == point2));
     }
 }
 

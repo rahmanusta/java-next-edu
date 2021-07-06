@@ -1,39 +1,32 @@
-= Java 16 Features
+= New Features in Java
 
 Features are separated by package name.
 
-* instanceofs
-** https://openjdk.java.net/jeps/394
-* linker
-** https://openjdk.java.net/jeps/389
-* records
-** https://openjdk.java.net/jeps/395
-* seals
-** https://openjdk.java.net/jeps/397
-* socket
-** https://openjdk.java.net/jeps/380
-* warnings
-** https://openjdk.java.net/jeps/390
-* stream
+* JEP 286: Local-Variable Type Inference (Java 10)
+** localvar
+* JEP 358: Helpful NullPointerExceptions (Java 14)
+** nullpointerexception
+* JEP 361: Switch Expressions (Java 14)
+** switches
+* JEP 378: Text Blocks (Java 15)
+** texts
+* JEP 394: Pattern Matching for instanceof (Java 16)
+** instanceof
+* JEP 395: Records (Java 16)
+** records
+* JEP 409: Sealed Classes (Java 17)
+** seals
+* JEP 406: Pattern Matching for switch (Preview) (Java 17)
+** matching
 
 == Slides
 
-https://github.com/rahmanusta/java16-edu/raw/master/Java_16_Features.pdf
+https://github.com/rahmanusta/java-next-edu/raw/master/Java_Newest_Features.pdf
 
 == Download Open JDK
 
-https://jdk.java.net/16/
+https://jdk.java.net/17/
 
-== JVM parameters
+== tryjshell.org
 
-The following JVM parameter must be set to run Foreign Linker API.
-
--Dforeign.restricted={deny,permit,debug,warn}
-
-=== Example
-
--Dforeign.restricted=warn
-
-== Standard C library functions
-
-https://www.ibm.com/support/knowledgecenter/en/ssw_ibm_i_74/rtref/stalib.htm
+https://tryjshell.org
